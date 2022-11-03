@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Find Me a Linux Distro</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap');
+        html{
+            width: 100vw
+        }
+
+        :root{
+            --main-color: #1C1C1C;
+            --main-text-color: lightgrey;
+            --main-background: #2D2D2D;
+            --main-bigtitle: white;
+        }
+
+        body{
+            background-color: var(--main-color);
+        }
+        #random-button{
+            font-family: 'Varela Round';
+            font-size: 25px;
+            text-align: center;
+            width:400px;
+            height:80px;
+            border-radius: 10px;
+            border:2px solid white;
+            outline: none;
+            margin-bottom: 250px;
+            transition: transform .2s;
+            cursor: pointer;
+        }
+    
+    
+        #random-button:hover{
+            transform: scale(1.02);
+        }
+    
+        .content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 0%;
+        }
+    
+        .BigTitle{
+            font-family: 'Varela Round';
+            font-size: 100px;
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+        }
+    
+        .smallerTitle{
+            font-family: 'Varela Round';
+            font-style: italic;
+            color: grey;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 100px;
+            position: relative;
+        }
+    
+        footer{
+            position: static;
+            bottom: 0;
+            clear: both;
+            left:0;
+            right:0;
+            margin-left:auto;
+            margin-right:auto;
+            display: grid;
+            justify-content: center;
+        }
+        
+        .suggestions{
+            font-family: 'Anonymous Pro', monospace;
+            outline: none;
+            background: none;
+            border:none;
+            color: var(--main-text-color);
+            font-size: 15px;
+            cursor: pointer;
+            cursor:pointer;
+            position: relative;
+            bottom: 75px;
+        }
+        
+        .GH{
+            cursor: pointer;
+            position: relative;
+            left: -100px;
+            bottom: -20px;
+            border:none;
+            outline: none;
+            background-color: none;
+            background:none;
+            filter: brightness(150%);
+            transition: filter .1s;
+        }
+        
+        .GH:hover{
+            filter:brightness(200%);
+        }
+        
+        .creditsanddate{
+            font-family: 'Roboto';    
+            color: var(--main-text-color);
+            font-size: 15px;
+            position: relative;
+            top: 0px;
+            left: -20px;
+            text-align: center;
+            display: grid;
+            justify-content: center;
+            bottom: 0;
+        }
+        
+        /*buttons*/
+        @media only screen and (max-width: 768px) {
+            .FMALDportal{
+                scale: 70%;
+            }
+        }
+        
+        @media only screen and (max-width: 320px) {
+            .FMALDportal{
+                scale: 50%;
+                left: -120px;
+            }
+        }
+        
+        .FMALDportal{
+            position: relative;
+            display: grid;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center;
+            align-items: center;
+            bottom: 150px;
+            background: var(--main-background);
+            height: 50px;
+            width: 480px;
+            border-radius: 5px;
+        }
+        
+        .FMALDportal .tip{
+            font-family: "Varela Round";
+            font-size: 12px;
+            visibility: hidden;
+            width: 120px;
+            background-color: RGBA(50, 50, 50, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            border: 5px RGBA(50, 50, 50, 0.9);
+        
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+        
+            /* Fade in tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .FMALDportal .tip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .FMALDportal:hover .tip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .FMALDportal button{
+            font-family: "Anonymous Pro", monospace;
+            color: white;
+            text-align: center;
+            position: absolute;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            height: 35px;
+            width: 50px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        
+        
+        .FMALDALL{
+            left: 5px;
+        }
+        
+        .FMALDDEBIAN{
+            left: 65px;
+        }
+        
+        .FMALDARCH{
+            left: 125px;
+        }
+        
+        .FMALDGENTOO{
+            left: 185px;
+        }
+        
+        .FMALDREDHAT{
+            left: 245px;
+        }
+        
+        .FMALDSUSE{
+            left: 305px;
+        }
+        
+        .FMALDSLACK{
+            left: 365px;
+        }
+        
+        .FMALDOTHER{
+            left: 425px;
+        }
+        
+        .FMALDEOL{
+            left: 545px;
+        }
+        
+        hr{
+            position:absolute;
+            left: 480px;
+            background-color: #fff;
+            border-radius: 5px;
+            border:none;
+        }
+        
+        .EOLsettings button{
+            font-family: "Anonymous Pro", monospace;
+            color: white;
+            text-align: center;
+            position: absolute;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            height: 35px;
+            width: 50px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .EOLon{
+            left: 5px;
+        }
+        
+        .EOLoff{
+            left: 65px;
+        }
+        
+        .EOLonly{
+            left: 125px;
+        }
+        
+        .EOLsettings{
+            position: relative;
+            display: grid;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center;
+            align-items: center;
+            bottom: 130px;
+            background: var(--main-background);
+            height: 50px;
+            width: 180px;
+            border-radius: 5px;
+        }
+        
+        .EOLsettings .tip{
+            font-family: "Varela Round";
+            font-size: 12px;
+            visibility: hidden;
+            width: 200px;
+            background-color: RGBA(50, 50, 50, 0.9);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 6px;
+            border: 5px RGBA(50, 50, 50, 0.9);
+            position: absolute;
+            z-index: 1;
+            bottom: -120%;
+            left: 30%;
+            margin-left: -60px;
+        
+            /* Fade in tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .EOLsettings .tip ::after{
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        
+        .EOLsettings:hover .tip {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        #dmbutton{
+            background-color: none;
+            background:none;
+            outline: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 2%;
+            display: grid;
+            justify-content: center;
+            filter: brightness(100%);
+            transition: filter .1s;
+            cursor: pointer;
+        }
+        
+        #dmbutton:hover{
+            filter: brightness(150%);
+        }
+        
+        #dmimg{
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        </style>
+    </head>
+    <body onload="changeButtonColor()">
+        <h1 class="BigTitle" id="BigTitle">Find me a Linux Distro</h1>
+        <h3 class="smallerTitle">Discover new Linux distribution with a single click</h3>
+        <div class="darkmode">
+            <button id="dmbutton" onclick="dmchange()" style="color: #678;">Change Color</button>
+        </div>
+        <div class="content">
+            <button id="random-button" onclick="clicked()">Find Me a Linux Distro</button>
+        </div>
+        <div class="FMALDportal">
+            <span class="tip">You can choose specific variant of distributions you want to see using this option</span>
+            <!-- number of items in fmald including index: 9-->
+            <button class="FMALDALL" id="FMALDALL" onclick="TOGGLEALL()">All</button>
+            <button class="FMALDDEBIAN" id="FMALDDEBIAN" onclick="TOGGLEDEBIAN()">DEBIAN</button>
+            <button class="FMALDARCH" id="FMALDARCH" onclick="TOGGLEARCH()">ARCH</button>
+            <button class="FMALDGENTOO" id="FMALDGENTOO" onclick="TOGGLEGENTOO()">GENTOO</button>
+            <button class="FMALDREDHAT" id="FMALDREDHAT" onclick="TOGGLEREDHAT()">RED HAT</button>
+            <button class="FMALDSUSE" id="FMALDSUSE" onclick="TOGGLESUSE()">SuSE</button>
+            <button class="FMALDSLACK" id="FMALDSLACK" onclick="TOGGLESLACK()">Slack</button>
+            <button class="FMALDOTHER" id="FMALDOTHER" onclick="TOGGLEOTHER()">OTHER</button>
+        </div>
+        <div class="EOLsettings">
+            <span class="tip">Option for EOL (End Of Life) Distributions</span>
+            <button class="EOLoff" id="EOLoff" onclick="TOGGLEEOLOFF()">EOL Off</button>
+            <button class="EOLon" id="EOLon" onclick="TOGGLEEOLON()">EOL On</button>
+            <button class="EOLonly" id="EOLonly" onclick="TOGGLEEOLONLY()">EOL Only</button>
+        </div>
+        <footer>
+            <button class="suggestions" onclick="relocateGithub()">Suggestions?</button>
+        </footer>
+        <script>
+        var links = [
+            "https://ubuntu.com/",
+            "http://ubuntuce.com/",
+            "https://pop.system76.com/",
+            "https://www.kali.org/",
+            "https://tails.boum.org/",
+            "https://www.debian.org/",
+            "https://archlinux.org/",
+            "https://www.gentoo.org/",
+            "https://linuxmint.com/",
+            "https://getfedora.org/",
+            "https://developers.redhat.com/products/rhel/download",
+            "https://os.gnome.org/",
+            "https://manjaro.org/",
+            "https://chromeenterprise.google/os/",
+            "https://xubuntu.org/",
+            "https://kubuntu.org/",
+            "https://www.raspberrypi.org/software/",
+            "https://store.steampowered.com/steamos",
+            "https://www.centos.org/",
+            "https://www.opensuse.org/",
+            "https://www.openmandriva.org/",
+            "https://www.clearos.com/",
+            "https://www.oracle.com/linux/",
+            "https://scientificlinux.org/",
+            "https://www.qubes-os.org/",
+            "https://geckolinux.github.io/",
+            "https://www.mageia.org/en/",
+            "https://www.rosalinux.ru/en/home-2/",
+            "https://www.pclinuxos.com/",
+            "https://en.altlinux.org/Downloads",
+            "https://www.pureos.net/",
+            "https://astralinux.ru/en/",
+            "https://www.parrotsec.org/",
+            "https://lubuntu.net/",
+            "https://ubuntubudgie.org/",
+            "https://ubuntu-mate.org/",
+            "https://ubuntustudio.org/",
+            "https://www.edubuntu.org/",
+            "https://www.backbox.org/",
+            "https://zorinos.com/",
+            "https://galliumos.org/",
+            "https://elementary.io/",
+            "https://ubuntuunity.org/",
+            "https://emmabuntus.org/category/english/",
+            "https://neon.kde.org/",
+            "https://www.linuxliteos.com/",
+            "http://www.linuxmce.org/",
+            "https://www.bodhilinux.com/",
+            "https://www.blue-systems.com/products/software/netrunner/",
+            "https://www.gooroom.kr/",
+            "https://trisquel.info/",
+            "https://peppermintos.com/",
+            "https://www.slax.org/",
+            "https://solydxk.com/",
+            "https://antixlinux.com/",
+            "https://mxlinux.org/",
+            "https://bosslinux.in/",
+            "https://www.primeos.in/download/",
+            "http://www.knopper.net/knoppix/index-en.html",
+            "https://www.devuan.org/",
+            "https://www.deepin.org/en/",
+            "https://www.crunchbangplusplus.org/",
+            "http://www.damnsmalllinux.org/",
+            "https://archbang.org/",
+            "https://artixlinux.org/",
+            "https://archlabslinux.com/",
+            "https://www.blackarch.org/",
+            "https://endeavouros.com/",
+            "https://www.frugalware.org/",
+            "https://www.hyperbola.info/",
+            "https://www.calculate-linux.org/",
+            "https://www.chromium.org/chromium-os",
+            "https://pentoo.ch/",
+            "https://www.sabayon.org/",
+            "https://nimblex.net/",
+            "https://salixos.org/",
+            "https://www.supergamer.x10host.com/",
+            "http://topologi-linux.sourceforge.net/",
+            "http://www.porteus.org/",
+            "https://www.dnalinux.com/",
+            "http://www.zenwalk.org/",
+            "http://www.lunar-linux.org/",
+            "https://guix.gnu.org/",
+            "https://www.foresightlinux.org/",
+            "https://www.gobolinux.org/",
+            "https://www.hpcfactor.com/reviews/software/jlime/donkey-1-0-2/",
+            "https://voidlinux.org/",
+            "http://www.toms.net/rb/",
+            "http://www.tinycorelinux.net/",
+            "https://getsol.us/home/",
+            "https://slitaz.org/en/",
+            "https://puppylinux.com/",
+            "https://openwrt.org/",
+            "https://nixos.org/",
+            "https://www.mklinux.org/",
+            "http://www.dragora.org/en/index.html",
+            "https://crux.nu/",
+            "https://www.alpinelinux.org/",
+            "https://armbian.com",
+            "https://qntm.org/suicide",
+            "http://www.slackware.com/",
+            "https://www.parabola.nu/",
+            "https://bedrocklinux.org/",
+            "https://instantos.io",
+            "https://maboxlinux.org/",
+            "https://ferenos.weebly.com/",
+            "https://rebornos.org/",
+            "https://endlessos.com/home/",
+            "https://www.elivecd.org/",
+            "https://q4os.org/index.html",
+            "https://reactos.org/",
+            "https://garudalinux.org/",
+            "https://www.system-rescue.org/Download/",
+            "https://kaosx.us/",
+            "https://voyagerlive.org/", //who ever made this website really needs improve their image quality and streatch resolution :/ 
+            "https://www.bunsenlabs.org/",
+            "https://lxle.net/",
+            "https://tos.odex.be/",
+            "https://thinstation.github.io/thinstation/",
+            "https://spi.dod.mil/lipose.htm", //not only is this distro having issues with security for it's website, the funding ended. Might move to EOL so I would have to keep an eye on them
+            "https://sourceforge.net/projects/rebeccablackos/", //Rebecca Black operating system 
+            "https://caixamagica.pt/en/linux-cm",
+            "https://easynas.org/",
+            "https://arcolinux.com/",
+            "https://arcolinuxb.com/", //this linux has two different websites
+            "https://regolith-linux.org/",
+            "https://silverblue.fedoraproject.org/",
+            "https://amogos.studio/", //ඞ sus
+            "https://almalinux.org",
+            "https://ibuntuos.com",
+            "https://nxos.org/",
+            "https://ultramarine-linux.org",
+            "https://en.cutefishos.com/", //the website takes ages to load, if ever
+            "https://rockylinux.org/"
+        ];
+        var EOLlinks = [
+            "https://archiveos.org/redstar/", 
+            //RedStarOS's website's inactive directory is called www.naenara.com.kp/en/kcc/ and naenara in korea means my country (내나라) pretty creative I guess
+            "http://hannahmontana.sourceforge.net/", //yes.
+            "https://archiveos.org/linux-xp/",
+            "https://archiveos.org/yellowdog/",
+            "https://archiveos.org/kateos/",
+            "https://archiveos.org/caldera/",
+            "https://archiveos.org/lps/",
+            "https://archiveos.org/vector/",
+            "https://archiveos.org/feather/",
+            "https://archiveos.org/dreamlinux/",
+            "https://www.kanotix.org/",
+            "https://archiveos.org/handy/",
+            "https://archiveos.org/kurumin/",
+            "https://archiveos.org/sabily/",
+            "https://www.nova.cu/",
+            "https://archiveos.org/cub/",
+            "https://archiveos.org/max/",
+            "https://sites.google.com/site/poseidonlinux/Home",
+            "https://archiveos.org/nepalinux/",
+            "http://berry.osdn.jp/",
+            'https://vinelinux.org/',
+            "https://sparkylinux.org/",
+            "https://peachosi.com/", //a little worried about this one hope I don't get in trouble 
+            "https://emmett31.wixsite.com/lightninglinux",
+            "https://archiveos.org/advanced/",
+            "https://archiveos.org/mydebian/",
+            "https://archiveos.org/netlinx/",
+            "https://archiveos.org/ubuntubsd/",
+            "https://archiveos.org/64studio/",
+            "https://archiveos.org/accelerated-knoppix/",
+            "https://archiveos.org/alinux/",
+            "https://archbox-linux.github.io/",
+            "https://archiveos.org/arch-anywhere/",
+            "https://archiveos.org/archeos/",
+            "https://archiveos.org/architect/",
+            "https://www.backtrack-linux.org/",
+            "https://archiveos.org/archmerge/",
+            "https://archiveos.org/bellaos/",
+            "https://archiveos.org/blackaudit/",
+            "http://biebian.sourceforge.net/", //this is the best linux distro ever lmao
+            "https://archiveos.org/bubuntu/",
+            "https://blankon.id/",
+            "http://environmentalomics.org/bio-linux/",
+            "https://archiveos.org/black-lab/",
+            "https://archiveos.org/saluki/",
+            "https://www.caelinux.com/CMS3/",
+            "https://archiveos.org/carolina/",
+            "https://archiveos.org/ubuntu-satanic/", //in the other spectrum we have satanic ubuntu
+            "https://www.caine-live.net/",
+            "https://archiveos.org/asplinux/",
+            "https://archiveos.org/tao/",
+            "https://archiveos.org/topologilinux/",
+            "https://archiveos.org/startcom/",
+            "https://archiveos.org/rivendell/",
+            "https://archiveos.org/united/",
+            "https://archiveos.org/caixa-magica/",
+            "https://archiveos.org/karamad/",
+            "http://urix.us/",
+            "https://archiveos.org/delix/",
+            "https://archiveos.org/vlos/",
+            "https://archiveos.org/slontoo/",
+            "https://gentoox.shallax.com/",
+            "https://archiveos.org/gentooth/",
+            "https://archiveos.org/cloveros/",
+            "https://archiveos.org/bintoo/",
+            "https://archiveos.org/phaeronix/",
+            "https://archiveos.org/bitdefender/",
+            "https://archiveos.org/muriqui/",
+            "https://archiveos.org/kde-four-live/",
+            "https://www.stresslinux.org/sl/",
+            "https://archiveos.org/astaro/",
+            "https://archiveos.org/antergos/",
+            "https://www.jolicloud.com/jolios/",
+            "https://www.backslashlinux.com/",
+            "http://www.ututo.org/en/"
+        ];
+        var debianlinks = [
+            "https://ubuntu.com/",
+            "https://pop.system76.com/",
+            "https://www.kali.org/",
+            "https://tails.boum.org/",
+            "https://www.debian.org/",
+            "https://linuxmint.com/",
+            "https://xubuntu.org/",
+            "https://kubuntu.org/",
+            "https://www.raspberrypi.org/software/",
+            "https://store.steampowered.com/steamos",
+            "https://www.pureos.net/",
+            "https://astralinux.ru/en/",
+            "https://www.parrotsec.org/",
+            "https://lubuntu.net/",
+            "https://ubuntubudgie.org/",
+            "https://ubuntu-mate.org/",
+            "https://ubuntustudio.org/",
+            "https://www.edubuntu.org/",
+            "https://www.backbox.org/",
+            "https://zorinos.com/",
+            "https://galliumos.org/",
+            "https://elementary.io/",
+            "https://ubuntuunity.org/",
+            "https://neon.kde.org/",
+            "https://www.linuxliteos.com/",
+            "http://www.linuxmce.org/",
+            "https://www.bodhilinux.com/",
+            "https://www.blue-systems.com/products/software/netrunner/",
+            "https://www.gooroom.kr/",
+            "https://trisquel.info/",
+            "https://peppermintos.com/",
+            "https://www.slax.org/",
+            "https://solydxk.com/",
+            "https://antixlinux.com/",
+            "https://mxlinux.org/",
+            "https://bosslinux.in/",
+            "https://www.primeos.in/download/",
+            "http://www.knopper.net/knoppix/index-en.html",
+            "https://www.devuan.org/",
+            "https://www.deepin.org/en/",
+            "https://www.crunchbangplusplus.org/",
+            "http://www.damnsmalllinux.org/",
+            "https://getsol.us/home/",
+            "https://armbian.com",
+            "https://qntm.org/suicide",
+            "https://ferenos.weebly.com/",
+            "https://endlessos.com/home/",
+            "https://www.elivecd.org/",
+            "https://q4os.org/index.html",
+            "https://voyagerlive.org/",
+            "https://www.bunsenlabs.org/",
+            "https://lxle.net/",
+            "https://sourceforge.net/projects/rebeccablackos/", //Rebecca Black operating system 
+            "https://regolith-linux.org/",
+            "https://www.jostroos.ml/amogos/", //impasta 
+            "https://ibuntuos.com",
+            "https://nxos.org/",
+            "https://en.cutefishos.com/",
+            "http://ubuntuce.com/"
+        ];
+        var EOLdebianlinks = [
+            "http://hannahmontana.sourceforge.net/", //very much yes.
+            "https://archiveos.org/feather/",
+            "https://archiveos.org/dreamlinux/",
+            "https://www.kanotix.org/",
+            "https://archiveos.org/handy/",
+            "https://archiveos.org/kurumin/",
+            "https://archiveos.org/sabily/",
+            "https://www.nova.cu/",
+            "https://archiveos.org/cub/",
+            "https://archiveos.org/max/",
+            "https://sites.google.com/site/poseidonlinux/Home",
+            "https://archiveos.org/nepalinux/",
+            "https://sparkylinux.org/",
+            "https://peachosi.com/",
+            "https://archiveos.org/advanced/",
+            "https://archiveos.org/mydebian/",
+            "https://archiveos.org/ubuntubsd/",
+            "https://archiveos.org/64studio/",
+            "https://archiveos.org/accelerated-knoppix/",
+            "https://www.backtrack-linux.org/",
+            "https://archiveos.org/bellaos/",
+            "https://archiveos.org/blackaudit/",
+            "https://archiveos.org/bubuntu/",
+            "http://environmentalomics.org/bio-linux/",
+            "https://archiveos.org/black-lab/",
+            "https://www.caelinux.com/CMS3/",
+            "https://archiveos.org/ubuntu-satanic/", //not sure if this distro has book of sin included
+            "https://www.caine-live.net/",
+            "https://archiveos.org/caixa-magica/",
+            "https://archiveos.org/delix/",
+            "https://archiveos.org/muriqui/",
+            "https://www.jolicloud.com/jolios/",
+            "https://www.backslashlinux.com/"
+        ];
+
+        var archlinks = [
+            "https://archlinux.org/",
+            "https://manjaro.org/",
+            "https://archbang.org/",
+            "https://artixlinux.org/",
+            "https://archlabslinux.com/",
+            "https://www.blackarch.org/",
+            "https://endeavouros.com/",
+            "https://www.frugalware.org/",
+            "https://www.hyperbola.info/",
+            "https://www.parabola.nu/",
+            "https://instantos.io",
+            "https://maboxlinux.org/",
+            "https://garudalinux.org/",
+            "https://tos.odex.be/",
+            "https://arcolinux.com/",
+            "https://arcolinuxb.com/",
+            "https://rebornos.org/"
+        ];
+        var EOLarchlinks = [
+            "https://archbox-linux.github.io/",
+            "https://archiveos.org/archeos/",
+            "https://archiveos.org/architect/",
+            "https://archiveos.org/archmerge/",
+            "https://archiveos.org/antergos/",
+            "https://archiveos.org/chakra/", //https://www.chakralinux.org/
+            "http://justbrowsinglinux.com/" //Cool but last release was in 2014
+        ];
+        var gentoolinks = [
+            "https://www.gentoo.org/",
+            "https://chromeenterprise.google/os/",
+            "https://www.calculate-linux.org/",
+            "https://www.chromium.org/chromium-os",
+            "https://pentoo.ch/",
+            "https://www.system-rescue.org/Download/"
+        ];
+        var EOLgentoolinks = [
+            "https://archiveos.org/vlos/",
+            "https://archiveos.org/slontoo/",
+            "https://gentoox.shallax.com/",
+            "https://archiveos.org/gentooth/",
+            "https://archiveos.org/cloveros/",
+            "https://archiveos.org/bintoo/",
+            "https://archiveos.org/phaeronix/",
+            "https://archiveos.org/bitdefender/"
+        ]; 
+        var slacklinks = [
+            "http://www.slackware.com/",
+            "https://nimblex.net/",
+            "https://salixos.org/",
+            "https://www.supergamer.x10host.com/",
+            "http://topologi-linux.sourceforge.net/",
+            "http://www.porteus.org/",
+            "https://www.dnalinux.com/",
+            "http://www.zenwalk.org/"
+        ];
+        var EOLslacklinks = [
+            "https://archiveos.org/vector/",
+            "https://archiveos.org/topologilinux/",
+            "https://archiveos.org/rivendell/"
+        ];
+        var redhatlinks = [
+            "https://getfedora.org/",
+            "https://developers.redhat.com/products/rhel/download",
+            "https://www.centos.org/",
+            "https://www.openmandriva.org/",
+            "https://www.clearos.com/",
+            "https://www.oracle.com/linux/",
+            "https://scientificlinux.org/",
+            "https://www.mageia.org/en/",
+            "https://www.rosalinux.ru/en/home-2/",
+            "https://www.pclinuxos.com/",
+            "https://en.altlinux.org/Downloads",
+            "https://silverblue.fedoraproject.org/",
+            "https://almalinux.org",
+            "https://ultramarine-linux.org",
+            "https://rockylinux.org/"
+        ];
+        var EOLredhatlinks = [
+            "https://archiveos.org/redstar/", 
+            "https://archiveos.org/linux-xp/",
+            "https://archiveos.org/yellowdog/",
+            "http://berry.osdn.jp/",
+            'https://vinelinux.org/',
+            "https://archiveos.org/asplinux/",
+            "https://archiveos.org/tao/",
+            "https://archiveos.org/startcom/"
+        ];
+        var suselinks = [ //there aren't a lot of suse unfortunetly 
+            "https://www.opensuse.org/",
+            "https://geckolinux.github.io/",
+            "https://easynas.org/"
+        ];
+        var EOLsuselinks = [
+            "https://archiveos.org/united/",
+            'https://archiveos.org/karamad/',
+            "http://urix.us/",
+            "https://archiveos.org/kde-four-live/",
+            "https://www.stresslinux.org/sl/",
+            "https://archiveos.org/astaro/"
+        ]; 
+        var otherlinks =[
+            "http://www.lunar-linux.org/",
+            "https://guix.gnu.org/",
+            "https://www.foresightlinux.org/",
+            "https://www.gobolinux.org/",
+            "https://www.hpcfactor.com/reviews/software/jlime/donkey-1-0-2/",
+            "https://voidlinux.org/",
+            "http://www.toms.net/rb/",
+            "http://www.tinycorelinux.net/",
+            "https://slitaz.org/en/",
+            "https://puppylinux.com/",
+            "https://openwrt.org/",
+            "https://nixos.org/",
+            "https://www.mklinux.org/",
+            "http://www.dragora.org/en/index.html",
+            "https://crux.nu/",
+            "https://www.alpinelinux.org/",
+            "https://bedrocklinux.org/",
+            "https://kaosx.us/",
+            "https://thinstation.github.io/thinstation/",
+            "https://asahilinux.org/",
+            "https://cb-linux.github.io/breath/"
+        ];
+        var EOLotherlinks = [
+            "https://archiveos.org/kateos/",
+            "https://archiveos.org/caldera/",
+            "https://archiveos.org/lps/",
+            "https://emmett31.wixsite.com/lightninglinux",//parent unknown. come back to it later
+            "https://archiveos.org/netlinx/",
+            "https://archiveos.org/alinux/",
+            "http://biebian.sourceforge.net/", 
+            //yeah it turns out biebian is not part of Debian or Ubuntu (shoking) it's acutally part of Puppy Linux which was part of a joke
+            "https://blankon.id/", //parent distribution uknown, check out later
+            "https://archiveos.org/saluki/",
+            "https://archiveos.org/carolina/",
+            "https://web.archive.org/web/20210720175650/https://spi.dod.mil/lipose.htm" 
+        ];
+        if (localStorage.getItem("EOLToggle") === null){
+            localStorage.setItem("EOLToggle", 2);
+        }
+        if (localStorage.getItem("EOLToggle") == 2){
+            localStorage.setItem("EOLToggle", 2);
+        }
+
+        if (localStorage.getItem("dmToggle") === null){
+            localStorage.setItem("dmToggle", 'light');
+        }
+
+        if (localStorage.dmToggle === null){
+            localStorage.setItem("dmToggle", 'light');
+        }
+
+        if (localStorage.getItem("distroToggle") === null){
+            localStorage.setItem("distroToggle", 1);
+        }
+
+        if (localStorage.distroToggle === null){
+            localStorage.setItem("distroToggle", 1);
+        }
+
+        // variables below 
+        var r = document.querySelector(":root");
+        var EOLToggle = localStorage.getItem("EOLToggle");
+        //var curr_toggle = localStorage.getItem("distroToggle");
+
+        //color palette from https://onaircode.com/html-css-color-palette-code-snippet/
+        var curr_color, prev_color;
+        var color_list = [
+            "#EC87C0", "#48CFAD", "#FC6E51", //pink, torquoise, orange
+            "#4FC1E9", "#AC92EC", "#ED5565", //aqua, purple, red
+            "#A0D468", "#5D9CEC", "#FFCE54"  //green, blue, yellow
+        ];
+
+        var distro_list = [
+            "TEST", "FMALDALL", "FMALDDEBIAN", "FMALDARCH", "FMALDGENTOO", "FMALDREDHAT", "FMALDSUSE", "FMALDSLACK", "FMALDOTHER"
+        ];
+
+        var elem_list = [
+            "FMALDOTHER", "FMALDALL", "FMALDDEBIAN", "FMALDARCH", "FMALDREDHAT", "FMALDSUSE",
+            "FMALDSLACK", "FMALDGENTOO"
+        ]
+
+        function clicked(){
+        
+            var distrolink_list = [
+                "gap", links, debianlinks, archlinks, gentoolinks, 
+                redhatlinks, suselinks, slacklinks, otherlinks
+            ];
+
+            var eoldistrolink_list = [
+                "gap", EOLlinks, EOLdebianlinks, EOLarchlinks, EOLgentoolinks, 
+                EOLredhatlinks, EOLsuselinks, EOLslacklinks, EOLotherlinks
+            ];
+        
+            if (EOLToggle == 1){
+                var chosentype = Math.floor((Math.random()*100)+ 1);
+                chosentype <= 25 ? window.open(eoldistrolink_list[localStorage.distroToggle][Math.floor(Math.random()*eoldistrolink_list[localStorage.distroToggle].length)]) : window.open(distrolink_list[localStorage.distroToggle][Math.floor(Math.random()*distrolink_list[localStorage.distroToggle].length)])
+            }
+            else if(EOLToggle == 2){
+                window.open(distrolink_list[localStorage.distroToggle][Math.floor(Math.random()*distrolink_list[localStorage.distroToggle].length)]);
+            }
+            else if(EOLToggle == 3){
+                window.open(eoldistrolink_list[localStorage.distroToggle][Math.floor(Math.random()*eoldistrolink_list[localStorage.distroToggle].length)]);
+            }    
+        }
+
+        function changeButtonColor(){
+            var color = Math.floor((Math.random() * 9) + 0);
+            /*added this function so no identical colors will be there 
+            everytime you load new random color*/
+            if (color_list[color] == curr_color || color_list[color] == prev_color){
+                changeButtonColor();
+            }
+            else{
+
+                for(let i=0; i < elem_list.length; i++){
+                    document.getElementById(elem_list[i]).style.backgroundColor=color_list[color];
+                }
+
+                if (localStorage.distroToggle == 1){
+                    document.getElementById("EOLon").style.backgroundColor = color_list[color];
+                    document.getElementById("EOLoff").style.backgroundColor = color_list[color];
+                    document.getElementById("EOLonly").style.backgroundColor = color_list[color];
+                    document.getElementById("random-button").style.backgroundColor = color_list[color];
+                    document.getElementById("BigTitle").style.color = color_list[color];
+                    document.getElementById("FMALDALL").style.backgroundColor = color_list[color];
+                }
+                else{
+                    document.getElementById("EOLon").style.backgroundColor = color_list[localStorage.distroToggle];
+                    document.getElementById("EOLoff").style.backgroundColor = color_list[localStorage.distroToggle];
+                    document.getElementById("random-button").style.backgroundColor=color_list[localStorage.distroToggle];
+                    document.getElementById("EOLonly").style.backgroundColor = color_list[localStorage.distroToggle];
+                    document.getElementById("BigTitle").style.color = color_list[localStorage.distroToggle];
+                    document.getElementById(distro_list[localStorage.distroToggle]).style.backgroundColor = color_list[localStorage.distroToggle]; 
+                }
+            
+                if (localStorage.distroToggle == 8){
+                    document.getElementById("EOLon").style.backgroundColor = "white";
+                    document.getElementById("EOLoff").style.backgroundColor = "white";
+                    document.getElementById("EOLonly").style.backgroundColor = "white";
+                    document.getElementById("random-button").style.backgroundColor= "white";
+                    if (localStorage.dmToggle == 'light'){
+                        document.getElementById("BigTitle").style.color = "white";
+                    }
+                    else if (localStorage.dmToggle == 'dark'){
+                        document.getElementById("BigTitle").style.color = "#3D3D3D";
+                    }
+                    document.getElementById("FMALDOTHER").style.backgroundColor = "#F5F7FA";
+                    document.getElementById("FMALDOTHER").style.color = "#3D3D3D";
+                }
+            }
+
+                if (EOLToggle == 1){
+                    if (localStorage.distroToggle == 8){
+                        document.getElementById("EOLon").style.color = "#3D3D3D";
+                        document.getElementById("EOLonly").style.color = "white";
+                        document.getElementById("EOLoff").style.color = "white";
+                    }
+                    else{
+                        document.getElementById("EOLon").style.color = "white";
+                    }
+                    document.getElementById("EOLoff").style.backgroundColor = "#3D3D3D";
+                    document.getElementById("EOLonly").style.backgroundColor = "#3D3D3D";
+                }
+                else if (EOLToggle == 2){
+                    if (localStorage.distroToggle == 8){
+                        document.getElementById("EOLoff").style.color = "#3D3D3D";
+                        document.getElementById("EOLonly").style.color = "white";
+                        document.getElementById("EOLon").style.color = "white";
+                    }
+                    else{
+                        document.getElementById("EOLoff").style.color = "white";
+                    }
+                    document.getElementById("EOLon").style.backgroundColor = "#3D3D3D";
+                    document.getElementById("EOLonly").style.backgroundColor = "#3D3D3D";
+                }
+                else if (EOLToggle == 3){
+                    if (localStorage.distroToggle == 8){
+                        document.getElementById("EOLonly").style.color = "#3D3D3D";
+                        document.getElementById("EOLoff").style.color = "white"
+                        document.getElementById("EOLon").style.color = "white"
+                    }
+                    else{
+                        document.getElementById("EOLonly").style.color = "white";
+                    }
+                    document.getElementById("EOLon").style.backgroundColor = "#3D3D3D";
+                    document.getElementById("EOLoff").style.backgroundColor = "#3D3D3D";
+                }
+                prev_color = curr_color;
+                curr_color = color_list[color];
+            
+            if (localStorage.distroToggle != 8){
+                document.getElementById("EOLon").style.color = "white";
+                document.getElementById("EOLoff").style.color = "white";
+                document.getElementById("FMALDOTHER").style.color = "white";
+            }
+        
+            if(localStorage.dmToggle == 'dark'){
+                document.getElementById('random-button').style.borderColor = "#4C4C4C";
+                r.style.setProperty('--main-color', 'F0F0F0');
+                r.style.setProperty('--main-text-color', '#1C1C1C');
+                r.style.setProperty('--main-background', "#D4D4D4");
+                r.style.setProperty('--main-bigtitle', 'white');
+            }
+            else{
+                document.getElementById('random-button').style.borderColor = "white";
+                r.style.setProperty('--main-color', '#1C1C1C');
+                r.style.setProperty('--main-text-color', 'lightgrey');
+                r.style.setProperty('--main-background', "#2D2D2D");
+                r.style.setProperty('--main-bigtitle', '#1C1C1C');
+            }
+        }
+
+        function relocateGithubHome(){
+            var githubhome = "https://github.com/KripC2160/findmealinuxdistro";
+            window.open(githubhome);
+        }
+
+        function relocateGithub(){
+            var issues = "https://github.com/KripC2160/findmealinuxdistro/issues";
+            window.open(issues);
+        }
+
+        function TOGGLEEOLON(){
+            if (EOLToggle != 1){
+                EOLToggle = 1;
+                localStorage.setItem("EOLToggle", 1);
+                changeButtonColor();
+            }
+        }
+
+        function TOGGLEEOLOFF(){
+            if (EOLToggle != 2){
+                EOLToggle = 2;
+                localStorage.setItem("EOLToggle", 2);
+                changeButtonColor();
+            }
+        }
+
+        function TOGGLEEOLONLY(){
+            if (EOLToggle != 3){
+                EOLToggle = 3;
+                localStorage.setItem("EOLToggle", 3);
+                changeButtonColor();
+            }
+        }
+
+        //option buttons
+
+        function TOGGLEALL(){
+            localStorage.distroToggle = 1;
+            changeButtonColor();
+        }
+
+        function TOGGLEDEBIAN(){
+            localStorage.distroToggle = 2;
+            changeButtonColor();
+        }
+
+        function TOGGLEARCH(){
+            localStorage.distroToggle = 3;
+            changeButtonColor();   
+        }
+
+        function TOGGLEGENTOO(){
+            localStorage.distroToggle = 4;
+            changeButtonColor();   
+        }
+
+        function TOGGLEREDHAT(){
+            localStorage.distroToggle = 5;
+            changeButtonColor();   
+        }
+
+        function TOGGLESUSE(){
+            localStorage.distroToggle = 6;
+            changeButtonColor();   
+        }
+
+        function TOGGLESLACK(){
+            localStorage.distroToggle = 7;
+            changeButtonColor();   
+        }
+
+        function TOGGLEOTHER(){
+            localStorage.distroToggle = 8;
+            changeButtonColor();   
+        }
+
+        function dmchange(){
+            if (localStorage.dmToggle == 'dark'){
+                localStorage.setItem("dmToggle", 'light');
+            }
+            else if (localStorage.dmToggle == 'light'){
+                localStorage.setItem("dmToggle", 'dark');
+            }
+            changeButtonColor();
+        }
+        </script>
+    </body>
+</html>
